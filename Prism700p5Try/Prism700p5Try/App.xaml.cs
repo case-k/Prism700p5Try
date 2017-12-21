@@ -1,7 +1,8 @@
 ﻿using Prism700p5Try.ViewModels;
 using Prism700p5Try.Views;
-using Microsoft.Practices.Unity;
+using Prism;
 using Prism.Unity;
+using Prism.Ioc;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -26,10 +27,10 @@ namespace Prism700p5Try
             await NavigationService.NavigateAsync("NavigationPage/MainPage");
         }
 
-        protected override void RegisterTypes()
+        protected override void RegisterTypes(IContainerRegistry containterRegistry)
         {
-            Container.RegisterTypeForNavigation<NavigationPage>();
-            Container.RegisterTypeForNavigation<MainPage>();
+            containterRegistry.RegisterForNavigation<NavigationPage>();
+            containterRegistry.RegisterForNavigation<MainPage>();
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Foundation;
 using UIKit;
-using Microsoft.Practices.Unity;
-using Prism.Unity;
+using Prism;
+using Prism.Ioc;
 
 namespace Prism700p5Try.iOS
 {
@@ -29,9 +29,9 @@ namespace Prism700p5Try.iOS
 
     public class iOSInitializer : IPlatformInitializer
     {
-        public void RegisterTypes(IUnityContainer container)
+        public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            
+
         }
     }
 }
