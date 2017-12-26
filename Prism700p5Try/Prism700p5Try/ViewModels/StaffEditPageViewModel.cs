@@ -6,6 +6,7 @@ using Realms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -13,6 +14,7 @@ namespace Prism700p5Try.ViewModels
 {
 	public class StaffEditPageViewModel : ViewModelBase
     {
+        private Realm _realm;
         private Transaction _transaction;
 
         public TStaff Staff { get; private set; }
@@ -21,8 +23,9 @@ namespace Prism700p5Try.ViewModels
         public ICommand CancelCommand { get; }
 
 
-        public StaffEditPageViewModel(INavigationService navigationService, TNaviParams naviparams) : base(navigationService)
+        public StaffEditPageViewModel(INavigationService navigationService, Realm realm, TNaviParams naviparams) : base(navigationService)
         {
+            _realm = realm;
             _transaction = naviparams.Get<Transaction>();
             Staff = naviparams.Get<TStaff>();
 
@@ -45,6 +48,10 @@ namespace Prism700p5Try.ViewModels
 
         override public void OnNavigatedFrom(NavigationParameters parameters)
         {
+            if (_realm.IsInTransaction)
+            {
+                _transaction.Rollback();
+            }
             _transaction.Dispose();
         }
     }

@@ -16,6 +16,7 @@ namespace Prism700p5Try.ViewModels
         private Realm _realm;
 
         public ICommand AddCommand { get; }
+        public ICommand EditCommand { get; }
         public ICommand DeleteCommand { get; private set; }
 
         public IEnumerable<TStaff> Staffs { get; private set; }
@@ -32,9 +33,14 @@ namespace Prism700p5Try.ViewModels
                 await NavigationService.NavigateAsync("StaffEditPage");
             });
 
+            EditCommand = new Command<TStaff>(async (staff) => 
+            {
+                naviparams.Set(_realm.BeginWrite());
+                naviparams.Set(staff);
+                await NavigationService.NavigateAsync("StaffEditPage");
+            });
+
             DeleteCommand = new Command<TStaff>(DeleteStaff);
-
-
 
             Staffs = _realm.All<TStaff>() as IEnumerable<TStaff>;
         }
