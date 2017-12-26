@@ -4,8 +4,9 @@
              x:Class="Prism700p5Try.Views.MainPage"
              Title="{Binding Title}">
 
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label Text="Welcome to Xamarin Forms and Prism!" />
-    </StackLayout>
+  <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+    <Label Text="Welcome to Xamarin Forms and Prism!" />
+    <Button Text="Try Realm" Command="{Binding TryRealmCommand}" />
+  </StackLayout>
 
 </ContentPage>

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Prism700p5Try.Views.StaffListPage"
+             Title="Staff List">
+
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Add" Command="{Binding AddCommand}" />
+  </ContentPage.ToolbarItems>
+
+  <ContentPage.Content>
+    <ListView ItemsSource="{Binding Staffs}" x:Name="StaffListView" ItemSelected="OnItemSelected">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <TextCell Text="{Binding StaffName}" Detail="{Binding OfficeName}">
+            <TextCell.ContextActions>
+              <MenuItem Text="Delete" IsDestructive="true"
+									      Command="{Binding BindingContext.DeleteStaffCommand, Source={x:Reference StaffListView}"
+								        CommandParameter="{Binding .}" />
+            </TextCell.ContextActions>
+          </TextCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </ContentPage.Content>
+  
+</ContentPage>

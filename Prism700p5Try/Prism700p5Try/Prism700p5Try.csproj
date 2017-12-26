@@ -5,8 +5,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Realm" Version="2.1.0" />
     <PackageReference Include="Xamarin.Forms" Version="2.5.0.121934" />
     <PackageReference Include="Prism.Unity.Forms" Version="7.0.0.336-pre" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\StaffListPage.xaml.cs">
+      <DependentUpon>StaffListPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\StaffEditPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

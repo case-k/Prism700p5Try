@@ -5,6 +5,7 @@ using Prism.Unity;
 using Prism.Ioc;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Realms;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Prism700p5Try
@@ -29,8 +30,13 @@ namespace Prism700p5Try
 
         protected override void RegisterTypes(IContainerRegistry containterRegistry)
         {
+            containterRegistry.RegisterInstance(Realm.GetInstance());
+            containterRegistry.RegisterInstance(new Models.TNaviParams());
+
             containterRegistry.RegisterForNavigation<NavigationPage>();
             containterRegistry.RegisterForNavigation<MainPage>();
+            containterRegistry.RegisterForNavigation<StaffListPage>();
+            containterRegistry.RegisterForNavigation<StaffEditPage>();
         }
     }
 }

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Prism700p5Try.Views.StaffEditPage">
+
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Cancel" Command="{Binding CancelCommand}" />
+    <ToolbarItem Text="Save" Command="{Binding SaveCommand}" />
+  </ContentPage.ToolbarItems>
+
+  <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+
+    <TableView Intent="Settings">
+      <TableRoot>
+
+        <TableSection Title="事務所と職員名を入力してください">
+          <EntryCell Label="事務所" Placeholder="事務所" Text="{Binding Staff.OfficeName}"  />
+          <EntryCell Label="職員名" Placeholder="職員名" Text="{Binding Staff.StaffName}" />
+        </TableSection>
+
+        <TableSection Title="パスワードを入力してください">
+          <EntryCell Label="パスワード" Placeholder="パスワード" Text="{Binding Staff.Password}"/>
+        </TableSection>
+
+      </TableRoot>
+    </TableView>
+
+  </StackLayout>
+
+</ContentPage>
